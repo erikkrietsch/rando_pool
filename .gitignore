@@ -1,4 +1,6 @@
-/.bundle
-/log/*
+.bundle
+log/*
 !/log/.keep
-/tmp
+tmp
+data
+db/structure.sql
