@@ -7,6 +7,10 @@ class Game < ActiveRecord::Base
     home_score > away_score ? home_team : away_team
   end
 
+  def losing_team
+    home_score < away_score ? home_team : away_team
+  end
+
   def delta
     (home_score - away_score).abs
   end

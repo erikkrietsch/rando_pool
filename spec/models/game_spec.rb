@@ -22,6 +22,24 @@ describe Game do
     end
   end
 
+  describe "#losing_team" do
+    context "when the home team wins" do
+      it "returns the away team" do
+        game = Game.create home_team: home_team, away_team: away_team,
+          home_score: 7, away_score: 0
+        expect(game.losing_team).to eq away_team
+      end
+    end
+
+    context "when the away team wins" do
+      it "returns the home team" do
+        game = Game.create home_team: home_team, away_team: away_team,
+          home_score: 0, away_score: 7
+        expect(game.losing_team).to eq home_team
+      end
+    end
+  end
+
   describe "#delta" do
     context "home team scores more" do
       it "returns a positive number" do
