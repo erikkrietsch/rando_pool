@@ -1,0 +1,33 @@
+%p= link_to season.name, season_path(season.name)
+
+%h1 Week #{week.number}
+
+%table
+  %thead
+    %tr
+      %th(colspan=2) Home
+      %th(colspan=2) Away
+  %tbody
+    - for game in games
+      %tr
+        %td= game.home_team.name
+        %td= game.home_score
+        %td= game.away_team.name
+        %td= game.away_score
+
+%table
+  %thead
+    %tr
+      %th Alias
+      %th Pick
+      %th Result
+      %th Score
+  %tbody
+    - for pick in picks
+      %tr
+        %td= pick.character.name
+        %td= pick.team.name
+        %td= pick.correct? ? "Won" : "Lost"
+        %td= pick.score
+
+%p Pick of the week: #{game_with_biggest_delta.winning_team.name} beat the #{game_with_biggest_delta.losing_team.name} by #{game_with_biggest_delta.delta}.

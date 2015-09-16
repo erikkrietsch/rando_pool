@@ -1,0 +1,5 @@
+%h1 Seasons
+
+%ul
+  - for season in seasons
+    %li= link_to "#{season.name} Season", season_path(season.name)

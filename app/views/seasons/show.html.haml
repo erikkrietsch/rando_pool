@@ -1,0 +1,18 @@
+%p= link_to "Seasons", seasons_path
+
+%h1 Season #{season.name}
+
+%ul
+  - for week in weeks
+    %li= link_to "Week #{week.number}", season_week_path(season.name, week.number)
+
+%table
+  %thead
+    %tr
+      %th Alias
+      %th Score
+  %tbody
+    - for character in characters
+      %tr
+        %td= character.name
+        %td= character.score
