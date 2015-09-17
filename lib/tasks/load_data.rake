@@ -1,4 +1,5 @@
 require 'csv'
+require 'open-uri'
 
 class DataLoader
   def initialize(path)
@@ -84,19 +85,19 @@ class DataLoader
 
   def data_for(file)
     uri = @path + file
-    CSV.read uri, { headers: true }
+    CSV.new open(uri), { headers: true }
   end
 end
 
-desc 'Load initial data'
-task load_data: :environment do
+desc 'Load initial data by providing uri'
+task :load_data, [:uri] => :environment do |t, args|
   season = Season.create name: '2014'
 
   (1..17).each do |i|
     season.weeks.create number: i
   end
 
-  loader = DataLoader.new 'data'
+  loader = DataLoader.new args[:uri]
   loader.import_teams
   loader.import_season
   loader.import_rando
