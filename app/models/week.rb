@@ -11,4 +11,12 @@ class Week < ActiveRecord::Base
   def game_for(team)
     games.where("home_team_id = ? OR away_team_id = ?", team.id, team.id).first
   end
+
+  def next_week
+    season.weeks.where(number: number + 1).first
+  end
+
+  def prev_week
+    season.weeks.where(number: number - 1).first
+  end
 end

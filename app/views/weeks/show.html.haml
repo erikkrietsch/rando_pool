@@ -1,5 +1,11 @@
 %p= link_to season.name, season_path(season.name)
 
+- if prev_week
+  %p= link_to "Week #{prev_week.number}", season_week_path(season.name, prev_week.number)
+
+- if next_week
+  %p= link_to "Week #{next_week.number}", season_week_path(season.name, next_week.number)
+
 %h1 Week #{week.number}
 
 %p= rando_result(week)
