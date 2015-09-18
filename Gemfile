@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'haml'
 gem 'decent_exposure'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'pry-rails'
