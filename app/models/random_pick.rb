@@ -6,8 +6,6 @@ class RandomPick < ActiveRecord::Base
     game.winning_team == team
   end
 
-  private
-
   def game
     @game ||= week.game_for team
   end
