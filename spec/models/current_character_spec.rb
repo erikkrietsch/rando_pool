@@ -33,4 +33,19 @@ describe CurrentCharacter do
       expect(current_character.player_name).to eq "Player One"
     end
   end
+
+  describe "#current_picks" do
+    it "returns the current picks for the character" do
+      character = Character.create
+      week = Week.create number: 1
+      team = Team.create
+      character.picks.create week: week, team: team
+      current_character = CurrentCharacter.new(character)
+      expect(current_character.current_picks.count).to eq 1
+
+      current_pick = current_character.current_picks.first
+      expect(current_pick.week_number).to eq week.number
+      expect(current_pick.team_id).to eq team.id
+    end
+  end
 end

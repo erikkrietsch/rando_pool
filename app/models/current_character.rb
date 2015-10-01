@@ -15,4 +15,8 @@ class CurrentCharacter
   def player_name
     player.name
   end
+
+  def current_picks
+    character.picks.map &CurrentPick.method(:new)
+  end
 end
