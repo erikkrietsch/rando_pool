@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/api/teams', to: 'api/teams#index'
   get '/api/current_characters', to: 'api/current_characters#index'
+  post '/api/current_picks', to: 'api/current_picks#create'
 
   root to: 'pages#home'
 end
