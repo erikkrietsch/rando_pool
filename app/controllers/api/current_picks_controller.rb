@@ -1,5 +1,4 @@
-class Api::CurrentPicksController < ApplicationController
-  protect_from_forgery with: :null_session
+class Api::CurrentPicksController < ApiController
   expose(:character) { Character.find params[:character_id] }
   expose(:current_picks) do
     picks = character.picks
