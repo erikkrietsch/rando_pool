@@ -1,6 +1,5 @@
 module ApplicationHelper
-  def rando_result(week)
-    random_pick = week.random_pick
+  def rando_result(random_pick)
     game = random_pick.game
 
     if random_pick.correct?

@@ -6,4 +6,5 @@ class WeeksController < ApplicationController
   expose(:game_with_biggest_delta) { games.sort_by(&:delta).last }
   expose(:next_week) { week.next_week }
   expose(:prev_week) { week.prev_week }
+  expose(:rando_pick) { week.random_pick }
 end
