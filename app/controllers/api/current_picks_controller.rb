@@ -1,10 +1,6 @@
 class Api::CurrentPicksController < ApiController
   expose(:character) { Character.find params[:character_id] }
-  expose(:current_picks) do
-    picks = character.picks
-    puts picks.count
-    picks.map &CurrentPick.method(:new)
-  end
+  expose(:current_picks) { character.picks.map &CurrentPick.method(:new) }
 
   def create
     team = Team.find params[:team_id]
