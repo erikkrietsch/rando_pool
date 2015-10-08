@@ -20,6 +20,13 @@ describe Game do
         expect(game.winning_team).to eq away_team
       end
     end
+
+    context "with incomplete game" do
+      it "returns nil" do
+        game = Game.create
+        expect(game.winning_team).to eq nil
+      end
+    end
   end
 
   describe "#losing_team" do
@@ -38,6 +45,13 @@ describe Game do
         expect(game.losing_team).to eq home_team
       end
     end
+
+    context "with incomplete game" do
+      it "returns nil" do
+        game = Game.create
+        expect(game.losing_team).to eq nil
+      end
+    end
   end
 
   describe "#delta" do
@@ -53,6 +67,27 @@ describe Game do
         game = Game.create home_score: 0, away_score: 7
         expect(game.delta).to eq 7
       end
+    end
+
+    context "with incomplete game" do
+      it "returns nil" do
+        game = Game.create
+        expect(game.delta).to eq nil
+      end
+    end
+  end
+
+  describe "#complete?" do
+    subject { game.complete? }
+
+    context "with no scores" do
+      let(:game) { Game.create }
+      it { should eq false }
+    end
+
+    context "with scores" do
+      let(:game) { Game.create home_score: 7, away_score: 0 }
+      it { should eq true }
     end
   end
 end

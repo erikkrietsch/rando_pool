@@ -4,14 +4,24 @@ class Game < ActiveRecord::Base
   belongs_to :week
 
   def winning_team
-    home_score > away_score ? home_team : away_team
+    if complete?
+      home_score > away_score ? home_team : away_team
+    end
   end
 
   def losing_team
-    home_score < away_score ? home_team : away_team
+    if complete?
+      home_score < away_score ? home_team : away_team
+    end
   end
 
   def delta
-    (home_score - away_score).abs
+    if complete?
+      (home_score - away_score).abs
+    end
+  end
+
+  def complete?
+    !!(home_score && away_score)
   end
 end
