@@ -60,4 +60,17 @@ describe Week do
       end
     end
   end
+
+  describe "#complete?" do
+    subject { week.complete? }
+
+    context "with complete games" do
+      before { week.games.first.update_attributes home_score: 7, away_score: 0 }
+      it { should eq true }
+    end
+
+    context "with incomplete games" do
+      it { should eq false }
+    end
+  end
 end

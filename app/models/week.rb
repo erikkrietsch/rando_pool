@@ -19,4 +19,8 @@ class Week < ActiveRecord::Base
   def prev_week
     season.weeks.where(number: number - 1).first
   end
+
+  def complete?
+    games.all? &:complete?
+  end
 end
