@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     namespace :current_season do
       get :characters, to: 'characters#index'
+      get :rando_picks, to: 'rando_picks#index'
       post :picks, to: 'picks#create'
     end
   end
