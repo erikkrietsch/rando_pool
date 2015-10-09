@@ -23,4 +23,8 @@ class Week < ActiveRecord::Base
   def complete?
     games.all? &:complete?
   end
+
+  def active_teams
+    games.map(&:teams).flatten.map(&:id).sort
+  end
 end

@@ -24,4 +24,8 @@ class Game < ActiveRecord::Base
   def complete?
     !!(home_score && away_score)
   end
+
+  def teams
+    [home_team, away_team].compact
+  end
 end

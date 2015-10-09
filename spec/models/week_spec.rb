@@ -73,4 +73,16 @@ describe Week do
       it { should eq false }
     end
   end
+
+  describe "#active_teams" do
+    it "returns the teams for each game, sorted by id" do
+      team_one = Team.create
+      team_two = Team.create
+
+      week = Week.create
+      week.games.create home_team: team_two, away_team: team_one
+
+      expect(week.active_teams).to eq [team_one.id, team_two.id]
+    end
+  end
 end

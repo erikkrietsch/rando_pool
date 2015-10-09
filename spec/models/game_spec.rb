@@ -90,4 +90,27 @@ describe Game do
       it { should eq true }
     end
   end
+
+  describe "#teams" do
+    context "with no teams" do
+      it "returns an empty array" do
+        game = Game.create
+        expect(game.teams).to eq []
+      end
+    end
+
+    context "with one team" do
+      it "returns just that one team" do
+        game = Game.create home_team: home_team
+        expect(game.teams).to eq [home_team]
+      end
+    end
+
+    context "with two teams" do
+      it "returns both teams" do
+        game = Game.create home_team: home_team, away_team: away_team
+        expect(game.teams).to eq [home_team, away_team]
+      end
+    end
+  end
 end
