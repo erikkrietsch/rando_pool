@@ -1,6 +1,6 @@
 require 'request_spec_helper'
 
-describe 'POST /api/current_picks' do
+describe 'POST /api/current_season/picks' do
   it "creates a pick and returns all picks for that character" do
     season = Season.create
     character = Character.create season: season
@@ -13,7 +13,7 @@ describe 'POST /api/current_picks' do
       week_number: week.number
     }
 
-    post_json '/api/current_picks', pick_params
+    post_json '/api/current_season/picks', pick_params
 
     expect(character.picks.count).to eq 1
 

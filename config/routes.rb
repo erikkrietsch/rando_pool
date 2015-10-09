@@ -3,9 +3,14 @@ Rails.application.routes.draw do
   get '/seasons/:season_name', to: 'seasons#show', as: :season
   get '/seasons/:season_name/weeks/:week_number', to: 'weeks#show', as: :season_week
 
-  get '/api/teams', to: 'api/teams#index'
-  get '/api/current_characters', to: 'api/current_characters#index'
-  post '/api/current_picks', to: 'api/current_picks#create'
+  namespace :api do
+    get :teams, to: 'teams#index'
+
+    namespace :current_season do
+      get :characters, to: 'characters#index'
+      post :picks, to: 'picks#create'
+    end
+  end
 
   root to: 'pages#home'
 end

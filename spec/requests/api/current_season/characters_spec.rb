@@ -1,6 +1,6 @@
 require 'request_spec_helper'
 
-describe 'GET /api/current_characters' do
+describe 'GET /api/current_season/characters' do
   it "returns the current characters" do
     team = Team.create
     season = Season.create
@@ -9,7 +9,7 @@ describe 'GET /api/current_characters' do
     character = Character.create season: season, player: player
     character.picks.create week: week, team: team
 
-    get_json '/api/current_characters'
+    get_json '/api/current_season/characters'
 
     expect(response.code).to eq "200"
     expect(response_json).to eq(
