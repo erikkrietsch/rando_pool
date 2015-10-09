@@ -1,8 +1,8 @@
 class Week < ActiveRecord::Base
   belongs_to :season
-  has_many :games
-  has_many :picks
-  has_one :random_pick
+  has_many :games, dependent: :destroy
+  has_many :picks, dependent: :destroy
+  has_one :random_pick, dependent: :destroy
 
   def scoring_week
     !random_pick.correct?
