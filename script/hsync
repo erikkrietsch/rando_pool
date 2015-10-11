@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+heroku pg:backups capture
+curl -o snapshot.sql `heroku pg:backups public-url`
+pg_restore --verbose --clean --no-acl --no-owner -d rando_pool_development snapshot.sql
+rm -f snapshot.sql
