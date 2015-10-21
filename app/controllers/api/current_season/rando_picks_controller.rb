@@ -1,4 +1,4 @@
-class Api::CurrentSeason::RandoPicksController < ApplicationController
+class Api::CurrentSeason::RandoPicksController < ApiController
   expose(:season) { Season.order(:id).last }
   expose(:random_picks) { season.weeks.map(&:random_pick).compact }
   expose(:current_picks) { random_picks.map &CurrentPick.method(:new) }

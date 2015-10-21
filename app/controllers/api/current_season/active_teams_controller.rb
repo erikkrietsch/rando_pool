@@ -1,4 +1,4 @@
-class Api::CurrentSeason::ActiveTeamsController < ApplicationController
+class Api::CurrentSeason::ActiveTeamsController < ApiController
   expose(:current_season) { Season.order(:id).last }
   expose(:week) { current_season.weeks.find_by number: params[:week_number] }
   expose(:active_teams) { week.active_teams }
