@@ -1,3 +1,3 @@
-class Api::CurrentSeason::CharactersController < ApiController
-  expose(:current_characters) { CurrentCharacter.all }
+class Api::CurrentSeason::CharactersController < Api::CurrentSeasonController
+  expose(:current_characters) { CurrentCharacter.all(current_season) }
 end

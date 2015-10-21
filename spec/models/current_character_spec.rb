@@ -1,22 +1,6 @@
 require 'rails_helper'
 
 describe CurrentCharacter do
-  describe ".all" do
-    context "with two seasons" do
-      it "only retuns the characters for the current season" do
-        first_season = Season.create
-        current_season = Season.create
-
-        first_character = Character.create season: first_season
-        current_character = Character.create season: current_season
-
-        current_characters = CurrentCharacter.all
-        expect(current_characters.count).to eq 1
-        expect(current_characters.first.character).to eq current_character
-      end
-    end
-  end
-
   describe "#id" do
     it "returns the id of the character" do
       character = Character.create

@@ -1,4 +1,4 @@
-class Api::CurrentSeason::PicksController < ApiController
+class Api::CurrentSeason::PicksController < Api::CurrentSeasonController
   expose(:character) { Character.find params[:character_id] }
   expose(:current_picks) { character.picks.map &CurrentPick.method(:new) }
 

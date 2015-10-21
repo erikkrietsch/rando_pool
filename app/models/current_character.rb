@@ -1,7 +1,6 @@
 class CurrentCharacter
-  def self.all
-    current_season = Season.order(:id).last
-    current_season.characters.map &self.method(:new)
+  def self.all(season)
+    season.characters.map &self.method(:new)
   end
 
   attr_reader :character
