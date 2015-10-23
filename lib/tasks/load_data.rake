@@ -76,6 +76,24 @@ class DataLoader
     attrs.each &Game.method(:create)
   end
 
+  def import_scores(season)
+    data = data_for "/#{season.name}-scores.csv"
+
+    for row in data
+      week = season.weeks.find_by number: row["week"].to_i
+      home_team = Team.find_by name: row["home_team"]
+
+      game = week.games.find_by home_team: home_team
+
+      scores = {
+        home_score: row["home_score"].to_i,
+        away_score: row["away_score"].to_i
+      }
+
+      game.update_attributes scores
+    end
+  end
+
   private
 
   def team_data
@@ -131,4 +149,13 @@ task :load_schedule, [:year, :uri] => :environment do |t, args|
 
   loader = DataLoader.new args[:uri]
   loader.import_schedule(season)
+end
+
+# run like this:
+# $ rake "load_scores[2015,data]"
+task :load_scores, [:year, :uri] => :environment do |t, args|
+  season = Season.find_by name: args[:year]
+
+  loader = DataLoader.new args[:uri]
+  loader.import_scores(season)
 end
