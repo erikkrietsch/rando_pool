@@ -8,4 +8,9 @@ module ApplicationHelper
       "Points this week - Rando's pick was the #{game.losing_team.name}, who lost to the #{game.winning_team.name}."
     end
   end
+
+  def pick_result(pick)
+    return "-" unless pick.game_complete?
+    pick.correct? ? "Won" : "Lost"
+  end
 end

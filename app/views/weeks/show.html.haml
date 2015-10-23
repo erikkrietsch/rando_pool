@@ -36,7 +36,7 @@
       %tr
         %td= pick.character.name
         %td= pick.team.name
-        %td= pick.correct? ? "Won" : "Lost"
+        %td= pick_result(pick)
         %td= pick.score
 
 - if week.complete?
