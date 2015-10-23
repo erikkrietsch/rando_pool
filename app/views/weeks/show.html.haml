@@ -8,7 +8,7 @@
 
 %h1 Week #{week.number}
 
-- if rando_pick
+- if rando_pick && rando_pick.game.complete?
   %p= rando_result(rando_pick)
 
 %table
