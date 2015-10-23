@@ -10,6 +10,7 @@ class PickScore
   end
 
   def score
+    return 0 unless game_complete?
     return delta if scoring_week && character_won
     character_won ? 0 : -delta
   end
@@ -22,6 +23,10 @@ class PickScore
 
   def character_won
     pick.correct?
+  end
+
+  def game_complete?
+    pick.game_complete?
   end
 
   def delta

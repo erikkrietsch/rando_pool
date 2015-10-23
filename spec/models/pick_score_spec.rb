@@ -45,4 +45,13 @@ describe PickScore do
       expect(score).to eq -7
     end
   end
+
+  context "when the game hasn't happened yet" do
+    it "returns 0" do
+      Game.first.update_attributes home_score: nil, away_score: nil
+      pick = Pick.create team: home_team, week: week
+      score = PickScore.for(pick)
+      expect(score).to eq 0
+    end
+  end
 end

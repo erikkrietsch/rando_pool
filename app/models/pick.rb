@@ -15,6 +15,10 @@ class Pick < ActiveRecord::Base
     PickScore.for self
   end
 
+  def game_complete?
+    game.complete?
+  end
+
   private
 
   def game
