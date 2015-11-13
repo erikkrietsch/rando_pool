@@ -13,4 +13,8 @@ module ApplicationHelper
     return "-" unless pick.game_complete?
     pick.correct? ? "Won" : "Lost"
   end
+
+  def character_status(character)
+    character.out ? "Out" : "In"
+  end
 end
