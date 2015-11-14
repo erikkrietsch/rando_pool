@@ -5,7 +5,7 @@ class CurrentCharacter
 
   attr_reader :character
 
-  delegate :id, :player, to: :character
+  delegate :id, :player, :out, to: :character
 
   def initialize(character)
     @character = character
