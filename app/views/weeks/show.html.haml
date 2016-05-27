@@ -15,15 +15,15 @@
 %table
   %thead
     %tr
-      %th(colspan=2) Home
       %th(colspan=2) Away
+      %th(colspan=2) Home
   %tbody
     - for game in games
       %tr
-        %td= game.home_team.name
-        %td= game.home_score
         %td= game.away_team.name
         %td= game.away_score
+        %td= game.home_team.name
+        %td= game.home_score
 
 %table
   %thead
