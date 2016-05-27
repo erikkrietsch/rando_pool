@@ -35,7 +35,7 @@
   %tbody
     - for pick in picks
       %tr
-        %td= pick.character.name
+        %td= link_to pick.character.name, season_character_path(season.name, pick.character.id)
         %td= pick.team.name
         %td= pick_result(pick)
         %td= pick.score

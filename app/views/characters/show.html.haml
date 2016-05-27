@@ -1,0 +1,16 @@
+%h1 #{character.name} - #{season.name} Season
+
+%table
+  %thead
+    %tr
+      %th Week
+      %th Pick
+      %th Result
+      %th Score
+  %tbody
+    - for pick in character.picks
+      %tr
+        %td= pick.week.number
+        %td= pick.team.name
+        %td= pick_result(pick)
+        %td= pick.score
