@@ -6,14 +6,14 @@ gem 'rails', '4.2.7'
 gem 'pg'
 gem 'unicorn'
 
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 gem 'decent_exposure'
 gem 'haml'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'redcarpet'
 gem 'sass-rails'
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 group :development, :test do
   gem 'pry-rails'
