@@ -36,7 +36,7 @@ task :pick_character, [:season_name, :player_name] => :environment do |t, args|
   player = Player.find_or_create_by name: args[:player_name]
 
   if Character.where(season: season, player: player).any?
-    puts "player already added"
+    puts "Player already added!"
     exit 1
   end
 
@@ -44,7 +44,7 @@ task :pick_character, [:season_name, :player_name] => :environment do |t, args|
     character = season.characters.create player: player, name: name
     puts character.name
   else
-    puts "valid name not found"
+    puts "Valid name not found!"
     exit 2
   end
 end
