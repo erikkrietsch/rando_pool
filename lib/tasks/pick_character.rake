@@ -32,12 +32,19 @@ end
 # $ rake "pick_character[2016,Nate]"
 desc 'Pick a character for the given Season for a given Player.'
 task :pick_character, [:season_name, :player_name] => :environment do |t, args|
+  season_name = args[:season_name]
+
+  unless Season.where(name: season_name).any?
+    puts "Season not built!"
+    exit 1
+  end
+
   season = Season.find_by name: args[:season_name]
   player = Player.find_or_create_by name: args[:player_name]
 
   if Character.where(season: season, player: player).any?
     puts "Player already added!"
-    exit 1
+    exit 2
   end
 
   if name = ValidName.find(season, player)
@@ -45,6 +52,6 @@ task :pick_character, [:season_name, :player_name] => :environment do |t, args|
     puts character.name
   else
     puts "Valid name not found!"
-    exit 2
+    exit 3
   end
 end
