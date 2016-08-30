@@ -24,7 +24,7 @@ class ValidName
   end
 
   def used_names
-    Character.pluck(:name).where("season_id = ? OR player_id = ?", @season.id, @player.id)
+    Character.where("season_id = ? OR player_id = ?", @season.id, @player.id).pluck(:name)
   end
 end
 
