@@ -29,11 +29,11 @@ class ValidName
 end
 
 # run like this:
-# $ rake "add_player[Some Name]"
-desc 'Add player to latest Season'
-task :add_player, [:name] => :environment do |t, args|
-  season = Season.order(:name).last
-  player = Player.find_or_create_by name: args[:name]
+# $ rake "pick_character[2016,Nate]"
+desc 'Pick a character for the given Season for a given Player.'
+task :pick_character, [:season_name, :player_name] => :environment do |t, args|
+  season = Season.find_by name: args[:season_name]
+  player = Player.find_or_create_by name: args[:player_name]
 
   if Character.where(season: season, player: player).any?
     puts "player already added"
@@ -42,7 +42,7 @@ task :add_player, [:name] => :environment do |t, args|
 
   if name = ValidName.find(season, player)
     character = season.characters.create player: player, name: name
-    puts name
+    puts characters.name
   else
     puts "valid name not found"
     exit 2
