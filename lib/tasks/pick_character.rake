@@ -42,7 +42,7 @@ task :pick_character, [:season_name, :player_name] => :environment do |t, args|
 
   if name = ValidName.find(season, player)
     character = season.characters.create player: player, name: name
-    puts characters.name
+    puts character.name
   else
     puts "valid name not found"
     exit 2
