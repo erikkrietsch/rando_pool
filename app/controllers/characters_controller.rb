@@ -1,4 +1,4 @@
 class CharactersController < ApplicationController
-  expose(:season, finder: :find_by_name, finder_parameter: :season_name)
+  expose(:season, find_by: :name, id: :season_name)
   expose(:character)
 end
