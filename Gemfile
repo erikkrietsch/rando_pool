@@ -15,6 +15,10 @@ gem 'redcarpet'
 gem 'sass-rails'
 gem 'uglifier'
 
+group :development do
+  gem 'rails-erd'
+end
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
