@@ -7,7 +7,7 @@ describe 'GET /api/current_season/rando_picks' do
     team = Team.create
     RandomPick.create week: week, team: team
 
-    get_json '/api/current_season/rando_picks'
+    get '/api/current_season/rando_picks', as: :json
 
     expect(response.code).to eq "200"
     expect(response_json).to eq(
@@ -29,7 +29,7 @@ describe 'POST /api/current_season/rando_picks' do
       week_number: week.number
     }
 
-    post_json '/api/current_season/rando_picks', pick_params
+    post '/api/current_season/rando_picks', params: pick_params, as: :json
 
     random_picks = RandomPick.all
     expect(random_picks.count).to eq 1

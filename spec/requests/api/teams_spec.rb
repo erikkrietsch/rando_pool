@@ -5,7 +5,7 @@ describe "GET /api/teams" do
     bears = Team.create name: "Bears"
     seahawks = Team.create name: "Seahawks"
 
-    get_json '/api/teams'
+    get '/api/teams', as: :json
 
     expect(response.code).to eq "200"
     expect(response_json).to eq(

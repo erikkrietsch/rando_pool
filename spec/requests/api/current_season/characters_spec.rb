@@ -9,7 +9,7 @@ describe 'GET /api/current_season/characters' do
     character = Character.create season: season, player: player, out: false
     character.picks.create week: week, team: team
 
-    get_json '/api/current_season/characters'
+    get '/api/current_season/characters', as: :json
 
     expect(response.code).to eq "200"
     expect(response_json).to eq(

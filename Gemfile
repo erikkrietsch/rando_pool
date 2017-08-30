@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.4.1'
 #ruby-gemset=rando_pool
 
-gem 'rails', '4.2.9'
+gem 'rails', '5.0.5'
 gem 'pg'
 gem 'unicorn'
 

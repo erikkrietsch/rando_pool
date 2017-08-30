@@ -13,7 +13,7 @@ describe 'POST /api/current_season/picks' do
       week_number: week.number
     }
 
-    post_json '/api/current_season/picks', pick_params
+    post '/api/current_season/picks', params: pick_params, as: :json
 
     expect(character.picks.count).to eq 1
 
