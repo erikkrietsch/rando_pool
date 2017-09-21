@@ -41,4 +41,4 @@
         %td= pick.score
 
 - if week.complete?
-  %p Pick of the week: #{game_with_biggest_delta.winning_team.name} beat the #{game_with_biggest_delta.losing_team.name} by #{game_with_biggest_delta.delta}.
+  %p Pick of the week: #{pick_presenter.text}.
